@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.star.platforms.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.star.platforms.model.User">
+        <constructor>
+            <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="user_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="telephone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="avatorl" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="nickname" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="gender" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+        </constructor>
+    </resultMap>
+    <insert id="insert" parameterType="com.star.platforms.model.User">
+    insert into star_user (username, user_id, password, 
+      telephone, email, avatorl, 
+      nickname, gender)
+    values (#{username,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{avatorl,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.star.platforms.model.User">
+        insert into star_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="telephone != null">
+                telephone,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="avatorl != null">
+                avatorl,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null">
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="avatorl != null">
+                #{avatorl,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <select id="login" resultType="com.star.platforms.model.User">
+        SELECT
+         *
+        from star_user
+        where username = #{username} AND password = #{password}
+    </select>
+
+   <!-- <resultMap id="BaseResultMap" type="com.star.platforms.model.User">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+    </resultMap>
+    -->
+</mapper>

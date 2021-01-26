@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.star</groupId>
+    <artifactId>platforms</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>platforms</name>
+    <description>星星平台</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <shiro.version>1.4.0</shiro.version>
+    </properties>
+
+
+    <dependencies>
+        <!--SpringBoot配置-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <!-- 排除 默认使用的logback  -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- log4j2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!--AOP-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!--Spring缓存抽象-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!--JPA-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!--邮件功能-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!--SpringMVC web 代理配置-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--实现热部署（还有plugin,yml配置）-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--单元测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.44</version>
+        </dependency>
+        <!--druid dataBase连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.19</version>
+        </dependency>
+        <!--shiro权限管理-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!--processor 注解处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--阿帕奇Utils-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+        <!--阿帕奇Utils-->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+        <!--和servlet一致-->
+<!--        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc-portlet</artifactId>
+        </dependency>-->
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <!--mybatis 自动生成插件-->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.3</version>
+            <scope>test</scope>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <excludes>
+                    <exclude>lib/*.jar</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+
+        </resources>
+
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--mybatis 自动生成插件-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                    <configurationFile>
+                        src/main/resources/mybatis-generator.xml</configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
