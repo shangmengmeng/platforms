@@ -14,13 +14,13 @@
         </constructor>
     </resultMap>
     <insert id="insert" parameterType="com.star.platforms.model.User">
-    insert into star_user (username, user_id, password, 
-      telephone, email, avatorl, 
-      nickname, gender)
-    values (#{username,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{avatorl,jdbcType=VARCHAR}, 
-      #{nickname,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT})
-  </insert>
+        insert into star_user (username, user_id, password,
+                               telephone, email, avatorl,
+                               nickname, gender)
+        values (#{username,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{avatorl,jdbcType=VARCHAR},
+                #{nickname,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT})
+    </insert>
     <insert id="insertSelective" parameterType="com.star.platforms.model.User">
         insert into star_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -76,19 +76,21 @@
             </if>
         </trim>
     </insert>
-    <select id="login" resultType="com.star.platforms.model.User">
-        SELECT
-         *
+    <select id="login" resultMap="myUserMap">
+        SELECT user_id,username,nickname,telephone,email,avatorl,gender
         from star_user
-        where username = #{username} AND password = #{password}
+        where username = #{username}
+          AND password = #{password}
     </select>
 
-   <!-- <resultMap id="BaseResultMap" type="com.star.platforms.model.User">
-        <id column="user_id" property="userId"/>
-        <result column="username" property="username"/>
-        <result column="nickname" property="nickname"/>
-        <result column="password" property="password"/>
-        <result column="email" property="email"/>
-    </resultMap>
-    -->
+     <resultMap id="myUserMap" type="com.star.platforms.vo.UserInfo">
+         <id column="user_id" property="userId"/>
+         <result column="user_id" property="userId"/>
+         <result column="username" property="username"/>
+         <result column="nickname" property="nickname"/>
+         <result column="telephone" property="telephone"/>
+         <result column="email" property="email"/>
+         <result column="avatorl" property="avator"/>
+         <result column="gender" property="gender"/>
+     </resultMap>
 </mapper>

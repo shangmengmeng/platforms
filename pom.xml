@@ -11,6 +11,8 @@
     <groupId>com.star</groupId>
     <artifactId>platforms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <!-- 指定项目打包方式 -->
+    <packaging>war</packaging>
     <name>platforms</name>
     <description>星星平台</description>
     <properties>
@@ -85,7 +87,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.44</version>
+            <version>1.2.75</version>
         </dependency>
         <!--druid dataBase连接池-->
         <dependency>
@@ -151,7 +153,11 @@
             <version>5.6.3</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 
