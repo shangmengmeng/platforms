@@ -1,7 +1,9 @@
 package com.star.platforms.dao;
 
 import com.star.platforms.model.ChatUser;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface ChatUserMapper {
     int deleteByPrimaryKey(String uid);
 
